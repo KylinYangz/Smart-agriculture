@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+
+<html>
+	<head> 
+	<meta charset="utf-8">
+		<title>数据监控</title>
+		
+		<style type="text/css">
+	
+		#trr1{font-weight:bold;
+				font-family:微软雅黑;
+				background-color:#FFAA25;
+		}
+		
+		#tr2{background-color:#F0F0F0;
+		}
+		
+		
+	</style>
+		
+	
+	</head>
+	
+	<body>
+	
+	<div height="18%" style="text-align:center;text-decoration:blink;text-indent:50px;padding-top: 37px;
+		text-transform:capitalize;color:white; font:bold 50px 楷体; background-color:#19BEF3;">
+		智慧农业数据监控<br>
+
+		<a href="/chaxun/{{names}}" ><h6 style="text-align:right;margin-right:2cm;font-size:medium">《返回查询界面</h6></a>
+	</div>
+	<table border='2' height="78%" width="100%">
+		<tr>
+			<td width="50%" height="264">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font size='5' >系统显示，您居室中，<font size='6'  color=yellow>{{names}}</font>被触发的总次数为：</font><font color='red' size='7'>{{ num[0][0] }}&nbsp;</font><font size='5'>次！</font></b>
+				
+			</td width="50%">
+			<td rowspan='1' valign=center width="50%">
+				设备触发(true为触发)时的详细数据：
+				<div style=" overflow-y:scroll;height:100%"   >
+					<table border='2' cellpadding=0 height='45%' width='100%' rules=rows   cellspacing=0   align=right>
+						{% if rs %}
+						<tr align=center id='trr1'  height="35px">
+							<td>ID</td>
+							<td>名称</td>
+							<td>状态</td>
+							<td>时间</td>
+						</tr height='44%'>
+							{% for r in rs %}
+							
+								<tr align=center id='tr2' height="40px">
+									<td><font class="h31">{{ r[0] }}</font></td>
+									<td><font class="h31">{{ r[1] }}</font></td>
+									<td><font class="h31">{{ r[3] }}</font></td>
+									<td><font class="h31">{{ r[4] }}</font></td>
+								</tr>
+								
+							{% endfor %}
+						{% endif %}
+					</table>
+				</div>
+			</td>
+		</tr>
+				
+		<tr valign=center>
+			<td height="40%" valign=center>
+            	&nbsp;&nbsp;下图为最近一个月设备触发所在时间（小时）段统计图<br/><br/>
+				&nbsp;&nbsp;<img src='../../static/zhaopian/zhexiantu.png' width='80%' height='80%' alt='智慧养老 —— 折线图'>
+			</td>
+          <td height="40%"> 
+           	<table border='2' height="100%" width="100%" valign=center>
+                	<tr valign=center>
+                	<td width="43%" valign=center>
+                    	&nbsp;&nbsp;下图为最近一个月设备触发时段扇形图<br/><br/>
+			 			 &nbsp;&nbsp;<img border='0px' src='/static/zhaopian/shanxingtu.png' width='97%' height='61%' alt='智慧养老 ——扇形图'>
+                    </td>
+                    <td width="57%">
+						{% for st in strr %}
+							{{st}}<br/>	
+						{% endfor %}
+                    </td>
+                </tr>
+                </table>
+            </td>
+	  </tr>
+			
+	</table>
+	
+	
+	</body>
+</html>

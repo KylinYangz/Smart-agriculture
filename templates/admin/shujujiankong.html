@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>智慧农业数据监控</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+            {# body{#}
+            {#    background: url(/static/images/jianbian.jpg) repeat-x rgb(194,255,255);#}
+            {#}#}
+            body{
+            background-color: #81F79F;
+            }
+             table.imagez{
+                 font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+             }
+             table.imagez tr{
+                 background:#b5cfd2 url('/static/images/blue.jpg');
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+             }
+             table.imagez td{
+                 background:#dcddc0 url('/static/images/blue.jpg');
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+             }
+			{#h1.hh1{#}
+			{#	font-size:xx-large;#}
+			{#	background:green;#}
+			{#	color:white;#}
+			{#}#}
+			{#h1.hh2{#}
+			{#	font-size:xx-large;#}
+			{#	background:blue;#}
+			{#	color:white;#}
+			{#}#}
+			{#td.td1{#}
+			{#	background:#F58C85;#}
+			{#}#}
+			{#td.td2{#}
+			{#	background:#C1EA4F;#}
+			{#}#}
+			{#h2{#}
+			{#	color:white;#}
+			{#}#}
+		</style>
+	</head>
+	<body bgcolor='#F9F9F9'>
+		<div style="text-align:center; text-decoration:blink; text-indent:50px;width:100%; height:120px;padding-top: 50px;
+			text-transform:capitalize;color:#FBF90D; font:bold 50px 楷体; background-color:#4595F8;">
+			智慧农业数据监控<br>
+			<a href="/fanhui"><h6 style="text-align:right;margin-right:2cm;font-size:medium">«返回功能界面</h6></a>
+		</div>
+		<table class="imagez" style="margin-top:1cm " border='0' width='100%' height='60%' cellpadding='0px' align=center >
+			<tr height='20%' align=center>
+				<td width='20%' class="td1"><h1 class='hh1'>温度</h1><h2 id="wd">N/A</h2></td>
+				<td width='20%' class="td2"><h1 class='hh2'>湿度</h1><h2 id="sd">N/A</h2></td>
+				<td width='20%' class="td1"><h1 class='hh1'>光照</h1><h2 id="gz">N/A</h2></td>
+				<td width='20%' class="td2"><h1 class='hh2'>电灯</h1><h2 id="dd">N/A</h2></td>
+				<td width='20%' class="td1"><h1 class='hh1'>风扇</h1><h2 id="fs">N/A</h2></td>
+			<tr>
+			<tr height='120px' align=center>
+				<td class="td1"><h1 class='hh1'>窗帘</h1><h2 id="cl">N/A</h2></td>
+				<td class="td2"><h1 class='hh2'>可燃气体</h1><h2 id="krqt">N/A</h2></td>
+				<td class="td1"><h1 class='hh1'>烟雾浓度</h1><h2 id="ywnd">N/A</h2></td>
+				<td class="td2"><h1 class='hh2'>火焰</h1><h2 id="hy">N/A</h2></td>
+{#				<td class="td1"><h1 class='hh1'>心率</h1><h2 id="xl">N/A</h2></td>#}
+                <td class="td1"><h1 class='hh1'>异物入侵</h1><h2 id="xl">正常</h2></td>
+			<tr>
+			<tr height='120px' align=center>
+				<td class="td1"><h1 class='hh1'>人体红外</h1><h2 id="rthw">N/A</h2></td>
+				<td class="td2"><h1 class='hh2'>磁场</h1><h2 id="cc">N/A</h2></td>
+				<td class="td1"><h1 class='hh1'>六轴</h1><h2 id="lz">N/A</h2></td>
+				<td class="td2"><h1 class='hh2'>触摸按键</h1><h2 id="cmaj">N/A</h2></td>
+				<td class="td1"><h1 class='hh1'>声音</h1><h2 id="sy">N/A</h2></td>
+			<tr>
+		</table><br><br>
+		<table border='0'  height='40%' width='100%'   bgcolor="#CEF6EC">
+				<tr >
+					<td width='33%' align=center>
+						<img src="../../static/images/diandeng.png" width=150px height=150px alt='数据监控'><br>
+						<button style="background-image: linear-gradient(#b5cfd2, #b5cfd2); " onclick=kongzhikaiguan('/kongzhi/diandengkaiqi')>开启</button> &nbsp&nbsp <button style="background-image: linear-gradient(#b5cfd2, #b5cfd2); "  onclick=kongzhikaiguan('/kongzhi/diandengguanbi')>关闭</button>
+						<h1><font color='#336799'>电灯</font></h1>
+					</td>
+					<td width='34%' align=center>
+						<img src="../../static/images/fengshan.png" width=150px height=150px alt='数据查询'><br>
+						<button style="background-image: linear-gradient(#b5cfd2, #b5cfd2); " onclick=kongzhikaiguan('/kongzhi/fengshankaiqi')>开启</button> &nbsp&nbsp <button style="background-image: linear-gradient(#b5cfd2, #b5cfd2); " onclick=kongzhikaiguan('/kongzhi/fengshanguanbi')>关闭</button>
+						<h1><font color='#336799'>风扇</font></h1>
+					</td>
+					<td width='33%' align=center>
+						<img src="../../static/images/zhendong.png" width=150px height=150px alt='遥控'><br>
+						<button style="background-image: linear-gradient(#b5cfd2, #b5cfd2); " onclick=kongzhikaiguan('/kongzhi/zhendongkaiqi')>开启</button> &nbsp&nbsp <button style="background-image: linear-gradient(#b5cfd2, #b5cfd2); " onclick=kongzhikaiguan('/kongzhi/zhendongguanbi')>关闭</button>
+						<h1><font color='#336799'>震动</font></h1>
+					</td>
+				</tr>
+			</table>
+		<h3 style="text-align:right;margin-right:3cm"></h3>
+
+
+		<script>
+
+			setInterval(jieshoushuju,1000);
+
+			function kongzhikaiguan(leixing){
+				var xhr=new XMLHttpRequest();
+				xhr.open('GET',leixing,true);
+				xhr.send();
+			}
+
+			function jieshoushuju(){
+
+				var xhr=new XMLHttpRequest();
+				xhr.open('GET','/shishishuju',true);
+				xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					chulishuju(xhr.responseText);
+				}
+				};
+				xhr.send();
+			};
+
+			function chulishuju(ss){
+				var objj = JSON.parse(ss);
+				for (x in objj) {
+					if (x=="温度"){
+						document.getElementById('wd').innerHTML=objj[x]+' ℃';
+						document.getElementById('wd').style.color='green'
+					}
+					if (x=="湿度"){
+						document.getElementById('sd').innerHTML=objj[x]+' %';
+						document.getElementById('sd').style.color='green'
+					}
+					if (x=="光照"){
+						document.getElementById('gz').innerHTML=objj[x]+' LX';
+						document.getElementById('gz').style.color='green'
+					}
+					if (x=="可燃气体"){
+						if(objj[x]>=5000){
+							document.getElementById('krqt').innerHTML='危险';
+							document.getElementById('krqt').style.color='red'
+						}
+						if(objj[x]<5000){
+							document.getElementById('krqt').innerHTML='安全';
+							document.getElementById('krqt').style.color='green'
+						}
+					}
+					if (x=="烟雾浓度"){
+						if(objj[x]>=5000){
+							document.getElementById('ywnd').innerHTML='危险';
+							document.getElementById('ywnd').style.color='red'
+						}
+						if(objj[x]<5000){
+							document.getElementById('ywnd').innerHTML='安全';
+							document.getElementById('ywnd').style.color='green'
+						}
+					}
+					if (x=="电灯"){
+						if(objj[x]=='true'){
+							document.getElementById('dd').innerHTML='开启';
+							document.getElementById('dd').style.color='#FFCE43'
+						}
+						if(objj[x]=='false'){
+							document.getElementById('dd').innerHTML='关闭';
+							document.getElementById('dd').style.color='#999999'
+						}
+					}
+					if (x=="风扇"){
+						if(objj[x]=='true'){
+							document.getElementById('fs').innerHTML='开启';
+							document.getElementById('fs').style.color='#FFCE43'
+						}
+						if(objj[x]=='false'){
+							document.getElementById('fs').innerHTML='关闭';
+							document.getElementById('fs').style.color='#999999'
+						}
+					}
+					if (x=="人体红外"){
+						if(objj[x]=='true'){
+							document.getElementById('rthw').innerHTML='有人闯入！';
+							document.getElementById('rthw').style.color='red'
+						}
+						if(objj[x]=='false'){
+							document.getElementById('rthw').innerHTML='检测安全';
+							document.getElementById('rthw').style.color='green'
+						}
+					}
+					if (x=="火焰"){
+						if(objj[x]=='true'){
+							document.getElementById('hy').innerHTML='发生火灾！';
+							document.getElementById('hy').style.color='red'
+						}
+						if(objj[x]=='false'){
+							document.getElementById('hy').innerHTML='检测正常';
+							document.getElementById('hy').style.color='green'
+						}
+					}
+					if (x=="磁场"){document.getElementById('cc').innerHTML='正常';}
+					if (x=="六轴"){document.getElementById('lz').innerHTML='正常';}
+					if (x=="心率"){document.getElementById('xl').innerHTML=objj[x];}
+					if (x=="声音"){
+						if(objj[x]=='true'){
+							document.getElementById('sy').innerHTML='异常声音！';
+							document.getElementById('sy').style.color='red'
+						}
+						if(objj[x]=='false'){
+							document.getElementById('sy').innerHTML='检测正常';
+							document.getElementById('sy').style.color='green'
+						}
+					}
+					if (x=="触摸按键"){
+						if(objj[x]=='true'){
+							document.getElementById('cmaj').innerHTML='按键开启';
+							document.getElementById('cmaj').style.color='green'
+						}
+						if(objj[x]=='false'){
+							document.getElementById('cmaj').innerHTML='按键关闭';
+							document.getElementById('cmaj').style.color='red'
+						}
+					}
+					if (x=="窗帘"){document.getElementById('cl').innerHTML=objj[x];}
+
+				}
+
+			}
+
+		</script>
+
+	</body>
+</html> 

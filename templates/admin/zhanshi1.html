@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+	<title>数据监控</title>
+	<style type="text/css">
+	
+		#trr1{font-weight:bold;
+				font-family:微软雅黑;
+				background-color:#FFAA25;
+		}
+		
+		#tr2{background-color:#F0F0F0;
+		}
+		
+		font.h31{
+			color:black;
+			font-size:large;
+		}
+		
+	</style>
+	
+</head>
+<body>
+	<div style="text-align:center;text-decoration:blink;text-indent:50px;height:115px;padding-top: 37px;
+ text-transform:capitalize;color:white; font:bold 50px 楷体; background-color:#19BEF3;">
+		欢迎光临智慧农业数据监控中心<br>
+		<a href="/fanhui" ><h6 style="text-align:right;margin-right:2cm;font-size:medium">«返回功能界面</h6></a>
+	</div>
+	
+	<table border='0' cellpadding=0 cellspacing=0  height='780px' width="100%">
+		<tr height='100%' >
+			<td width='15%' height='100%' align=center bgcolor='#94C3ED'>
+				<a href='/chaxun/温度'><h3>温度</h3></a>
+				<a href='/chaxun/湿度'><h3>湿度</h3></a>
+				<a href='/chaxun/光照'><h3>光照</h3></a>
+				<a href='/chaxun/火焰'><h3>火焰</h3></a>
+				<a href='/chaxun/声音'><h3>声音</h3></a>
+{#				<a href='/chaxun/心率'><h3>心率</h3></a>#}
+{#                <a href='/chaxun/心率'><h3>异物入侵</h3></a>#}
+{#				<a href='/chaxun/电灯'><h3>灯泡</h3></a>#}
+{#				<a href='/chaxun/风扇'><h3>风扇</h3></a>#}
+				<a href='/chaxun/人体红外'><h3>人体红外</h3></a>
+				<a href='/chaxun/可燃气体'><h3>可燃气体</h3></a>
+				<a href='/chaxun/烟雾浓度'><h3>烟雾浓度</h3></a>
+{#				<a href='/chaxun/触摸按键'><h3>触摸按键</h3></a>#}
+			</td>
+			<td width='100%' height='100%' valign=top align=center>
+				<div style=" overflow-y:scroll" width='100%' height='100%'>
+					<h6><font size="4" color="blue">{{ tishi }}</font></h6> 
+					<table border='0' cellpadding=0 height='100%' width='100%' rules=rows   cellspacing=0   align=center>
+						{% if rs %}
+						<tr align=center id='trr1' style="height:40px" width='100%'>
+							<td>ID</td>
+							<td>名称</td>
+							<td>设备ID</td>
+							<td>设备类型</td>
+							<td>时间</td>
+							<td>传送类型</td>
+							<td>状态</td>
+						</tr>
+							{% for r in rs %}
+								<tr align=center id='tr2' style="height:40px" width='100%'>
+									<td><font class="h31">{{ r[0] }}</font></td>
+									<td><font class="h31">{{ r[1] }}</font></td>
+									<td><font class="h31">{{ r[2] }}</font></td>
+									<td><font class="h31">{{ r[3] }}</font></td>
+									<td><font class="h31">{{ r[4] }}</font></td>
+									<td><font class="h31">{{ r[5] }}</font></td>
+									<td><font class="h31">
+										{% if type=='电灯' or type=='风扇' or type=='触摸按键' %}
+											{% if r[6]=='true' %}
+												开启
+											{% else %}
+												关闭
+											{% endif %}
+										{% else %}
+											{% if type=='火焰' or type=='人体红外' or type=='声音' %}
+												{% if r[6]=='true' %}
+													危险
+												{% else %}
+													安全
+												{% endif %}
+											{% else %}
+												{% if type=='温度' %}
+													{{ r[6] }} ℃
+												{% else %}
+													{% if type=='湿度' %}
+														{{ r[6] }} %
+													{% else %}
+														{% if type=='光照' %}
+															{{ r[6] }} 勒克斯
+														{% else %}
+															{{ r[6] }}
+														{% endif %}
+													{% endif %}
+												{% endif %}
+											{% endif %}
+										{% endif %}
+									</font></td>
+								</tr>
+							{% endfor %}
+						<tr>{%if type=='温度' or type=='湿度' or type=='光照' or type=='心率' %}
+							<td align=center>  </td>
+							{% else %}
+							<td align=center><font size='4' ><a href='/gotodie/{{type}}/{{p}}'>分析</a></font></td>
+							{% endif %}
+							<td align=center colspan=2><a href='/page/{{type}}/{{page-1}}'><font size=4>上一页</font></a></td>
+							<td align=center colspan=2><a href='/page/{{type}}/{{page+1}}'><font size=4>下一页</font></a></td>
+							<td align=center colspan=2><font size=4>第 {{ page }} 页</font></td>
+						</tr>
+						{% else %}
+							<h4>尚无数据！</h4>
+						{% endif %}
+					</table>
+				</div>
+				
+			</td>
+		
+	</table>
+ 
+ 
+ 
+ </body>
+
+</html>
